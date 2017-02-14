@@ -9,7 +9,7 @@ import { Component, Directive, ElementRef, Renderer, ChangeDetectionStrategy, Vi
   selector: '[xLarge]'
 })
 export class XLargeDirective {
-  constructor(element: ElementRef, renderer: Renderer) {
+  constructor(element, renderer) {
     // ** IMPORTANT **
     // we must interact with the dom through -Renderer-
     // for webworker/server to see the changes
@@ -17,11 +17,14 @@ export class XLargeDirective {
     // ^^
   }
 }
+XLargeDirective.parameters  = [
+  [ElementRef], [Renderer]
+];
 
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
-  encapsulation: ViewEncapsulation.Emulated,
-  selector: 'app',
+  encapsulation: ViewEncapsulation.None,
+  selector: 'my-app',
   styles: [`
     * { padding:0; margin:0; font-family: 'Droid Sans', sans-serif; }
     #universal { text-align:center; font-weight:bold; padding:15px 0; }
@@ -57,10 +60,19 @@ export class XLargeDirective {
         <main>
           <router-outlet></router-outlet>
         </main>
+
       </div>
     </div>
   `
 })
 export class AppComponent {
-  title = 'ftw';
+  constructor() {
+    this.title = 'ftw';
+  }
 }
+
+
+// strong>Router-outlet:</strong>
+// <main>
+//   <router-outlet></router-outlet>
+// </main>

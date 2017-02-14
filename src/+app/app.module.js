@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { HomeModule } from './+home/home.module';
-import { AboutModule } from './+about/about.module';
-import { TodoModule } from './+todo/todo.module';
+// import { AboutModule } from './+about/about.module';
+// import { TodoModule } from './+todo/todo.module';
 
 import { SharedModule } from './shared/shared.module';
 
@@ -16,8 +16,8 @@ import { AppComponent, XLargeDirective } from './app.component';
   imports: [
     SharedModule,
     HomeModule,
-    AboutModule,
-    TodoModule,
+    // AboutModule,
+    // TodoModule,
     AppRoutingModule
   ]
 })

@@ -3,17 +3,17 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UniversalModule, isBrowser, isNode } from 'angular2-universal/node'; // for AoT we need to manually split universal packages
 
-import { AppModule, AppComponent } from './+app/app.module';
-import { SharedModule } from './+app/shared/shared.module';
-import { CacheService } from './+app/shared/cache.service';
+import { AppModule, AppComponent } from '../+app/app.module';
+import { SharedModule } from '../+app/shared/shared.module';
+// import { CacheService } from './+app/shared/cache.service';
 
 // Will be merged into @angular/platform-browser in a later release
 // see https://github.com/angular/angular/pull/12322
-import { Meta } from './angular2-meta';
+// import { Meta } from './angular2-meta';
 
-export function getLRU() {
-  return new Map();
-}
+// export function getLRU() {
+//   return new Map();
+// }
 export function getRequest() {
   return Zone.current.get('req') || {};
 }
@@ -43,31 +43,31 @@ export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
     { provide: 'req', useFactory: getRequest },
     { provide: 'res', useFactory: getResponse },
 
-    { provide: 'LRU', useFactory: getLRU, deps: [] },
+    // { provide: 'LRU', useFactory: getLRU, deps: [] },
 
-    CacheService,
+    // CacheService,
 
-    Meta,
+    // Meta,
   ]
 })
 export class MainModule {
-  constructor(cache: CacheService) {
-    this.cache = CacheService;
-  }
+//   constructor(cache: CacheService) {
+//     this.cache = CacheService;
+//   }
 
-  /**
-   * We need to use the arrow function here to bind the context as this is a gotcha
-   * in Universal for now until it's fixed
-   */
-  universalDoDehydrate = (universalCache) => {
-    universalCache[CacheService.KEY] = JSON.stringify(this.cache.dehydrate());
-  }
+//   /**
+//    * We need to use the arrow function here to bind the context as this is a gotcha
+//    * in Universal for now until it's fixed
+//    */
+//   universalDoDehydrate = (universalCache) => {
+//     universalCache[CacheService.KEY] = JSON.stringify(this.cache.dehydrate());
+//   }
 
- /**
-  * Clear the cache after it's rendered
-  */
-  universalAfterDehydrate = () => {
-    // comment out if LRU provided at platform level to be shared between each user
-    this.cache.clear();
-  }
+//  /**
+//   * Clear the cache after it's rendered
+//   */
+//   universalAfterDehydrate = () => {
+//     // comment out if LRU provided at platform level to be shared between each user
+//     this.cache.clear();
+//   }
 }

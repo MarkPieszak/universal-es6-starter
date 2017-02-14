@@ -35,7 +35,7 @@ var commonConfig = {
   module: {
     rules: [
       // TypeScript
-      { test: /\.js$/,   use: ['babel-loader'], exclude: /(node_modules)/,
+      { test: /\.js$/,   use: ['babel-loader', 'angular2-template-loader'], exclude: /(node_modules)/,
         query: {
           presets: ["es2015", "angular2"],
           plugins: ["transform-decorators-legacy"]

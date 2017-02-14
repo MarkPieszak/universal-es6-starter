@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 
-import { ModelService } from '../shared/model/model.service';
+import { Http } from '@angular/http';
+
+// import { ModelService } from '../shared/model/model.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
@@ -10,18 +12,22 @@ import { ModelService } from '../shared/model/model.service';
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
-  data: any = {};
-  constructor(public model: ModelService) {
-
+  
+  constructor(http) {
+    this.data = {};
+    this.http = http;
     // we need the data synchronously for the client to set the server response
     // we create another method so we have more control for testing
     this.universalInit();
   }
 
   universalInit() {
-    this.model.get('/data.json').subscribe(data => {
+    this.http.get('/data.json').subscribe(data => {
       this.data = data;
     });
   }
 
 }
+HomeComponent.parameters = [
+  [Http]
+];

@@ -14,7 +14,7 @@ import { load as loadWebFont } from 'webfontloader';
 // enable prod for faster renders
 // enableProdMode();
 
-import { MainModule } from './platform-modules/fake.module';
+import { MainModule } from './platform-modules/browser.module';
 
 export const platformRef = platformUniversalDynamic();
 

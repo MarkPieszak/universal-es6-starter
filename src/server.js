@@ -22,7 +22,7 @@ import { enableProdMode } from '@angular/core';
 import { createEngine } from 'angular2-express-engine';
 
 // App
-import { MainModule } from './platform-modules/fake.module';
+import { MainModule } from './platform-modules/node.module';
 
 // Routes
 import { routes } from './server.routes';
