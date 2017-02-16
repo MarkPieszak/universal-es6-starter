@@ -13,8 +13,12 @@ A minimal Angular 2+ starter for Universal JavaScript using ES6/Babel and Webpac
 > **Recommend** : If you're looking for Universal Starter written in TypeScript go to [angular/universal-starter](https://github.com/angular/universal-starter)
 > If you're looking for the Angular Universal repo go to [**angular/universal**](https://github.com/angular/universal)  
 
+---
+
 ## What's the difference between TypeScript and ES6 or even ES5 when writing Angular v2+?
 [Read here for more information](https://angular.io/docs/ts/latest/cookbook/ts-to-js.html)
+
+---
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -37,17 +41,22 @@ A minimal Angular 2+ starter for Universal JavaScript using ES6/Babel and Webpac
 ## AoT and Prod
 * `npm run build:prod:ngc` to compile the ngfactory files and build prod
 
-## Universal "Gotchas"
+---
+
+# Universal "Gotchas"
 
 > When building Universal components in Angular 2 there are a few things to keep in mind.
 
- - To use `templateUrl` or `styleUrls` you must use **`angular2-template-loader`** in your TS loaders.
-    - This is already setup within this starter repo. Look at the webpack.config file [here](https://github.com/angular/universal-starter/blob/master/webpack.config.ts) for details & implementation.
  - **`window`**, **`document`**, **`navigator`**, and other browser types - _do not exist on the server_ - so using them, or any library that uses them (jQuery for example) will not work. You do have some options, if you truly need some of this functionality:
     - If you need to use them, consider limiting them to only your main.client and wrapping them situationally with the imported *isBrowser / isNode* features from Universal.  `import { isBrowser, isNode } from 'angular2-universal'`;
     - Another option is using `DOM` from ["@angular/platform-browser"](https://github.com/angular/angular/blob/e3687706c71beb7c9dbdae1bbb5fbbcea588c476/modules/%40angular/platform-browser/src/dom/dom_adapter.ts#L34)
  - **Don't manipulate the nativeElement directly**. Use the _Renderer_. We do this to ensure that in any environment we're able to change our view.
-```
+ - To use `templateUrl` or `styleUrls` you must use **`angular2-template-loader`** in your TS loaders.
+    - This is already setup within this starter repo. Look at the webpack.config file [here](https://github.com/angular/universal-starter/blob/master/webpack.config.ts) for details & implementation.
+ - Try to *limit or* **avoid** using **`setTimeout`**. It will slow down the server-side rendering process. Make sure to remove them [`ondestroy`](https://angular.io/docs/ts/latest/api/core/index/OnDestroy-class.html) in Components.
+   - Also for RxJs timeouts, make sure to _cancel_ their stream on success, for they can slow down rendering as well.
+ - **Don't manipulate the nativeElement directly**. Use the _Renderer_. We do this to ensure that in any environment we're able to change our view.
+```typescript
 constructor(element: ElementRef, renderer: Renderer) {
   renderer.setElementStyle(element.nativeElement, 'font-size', 'x-large');
 }
@@ -56,6 +65,18 @@ constructor(element: ElementRef, renderer: Renderer) {
     - Use a [UniversalCache](https://github.com/angular/universal-starter/blob/master/src/+app/shared/api.service.ts#L47-L71) instead of regular Http, to save certain requests so they aren't re-ran again on the Client.
  - Know the difference between attributes and properties in relation to the DOM.
  - Keep your directives stateless as much as possible. For stateful directives, you may need to provide an attribute that reflects the corresponding property with an initial string value such as url in img tag. For our native `<img src="">` element the src attribute is reflected as the src property of the element type HTMLImageElement.
+
+
+----
+ 
+# Found a Bug? Want to Contribute?
+
+Nothing's ever perfect, but please let me know by creating an issue (make sure there isn't an existing one about it already), and we'll try and work out a fix for it! If you have any good ideas, or want to contribute, feel free to either make an Issue with the Proposal, or just make a PR from your Fork.
+
+----
+
+
+# Other Tips:
 
 ### Brotli Compression Support
 
@@ -107,6 +128,8 @@ app.use(interceptor((req, res)=>({
 })));
 ```
 this will check the support, compress and cache the response.
+
+---
 
 ## Edge case of server compatibility with Promise polyfills
 
