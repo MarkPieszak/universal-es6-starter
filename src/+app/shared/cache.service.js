@@ -1,9 +1,10 @@
 import { Inject, Injectable, isDevMode } from '@angular/core';
 
 @Injectable()
-export let CacheService = class CacheService {
+export class CacheService {
     constructor(_cache) {
         this._cache = _cache;
+        this.KEY = 'CacheService';
     }
     /**
      * check if there is a value in our store
@@ -78,6 +79,6 @@ export let CacheService = class CacheService {
 CacheService.KEY = 'CacheService';
 
 CacheService.parameters = [
-  [Inject('LRU')]
+  [new Inject('LRU')]
 ];
 

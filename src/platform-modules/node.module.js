@@ -11,9 +11,9 @@ import { CacheService } from '../+app/shared/cache.service';
 // see https://github.com/angular/angular/pull/12322
 import { Meta } from '../angular2-meta';
 
-// export function getLRU() {
-//   return new Map();
-// }
+export function getLRU() {
+  return new Map();
+}
 export function getRequest() {
   return Zone.current.get('req') || {};
 }
@@ -43,7 +43,7 @@ export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
     { provide: 'req', useFactory: getRequest },
     { provide: 'res', useFactory: getResponse },
 
-    // { provide: 'LRU', useFactory: getLRU, deps: [] },
+    { provide: 'LRU', useFactory: getLRU, deps: [] },
 
     CacheService,
     Meta

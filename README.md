@@ -1,15 +1,16 @@
 
 <p align="center">
 
-    <img src="https://cloud.githubusercontent.com/assets/1016365/10639063/138338bc-7806-11e5-8057-d34c75f3cafc.png" alt="Universal Angular 2" height="320"/>
+    <img src="https://cloud.githubusercontent.com/assets/1016365/10639063/138338bc-7806-11e5-8057-d34c75f3cafc.png" alt="Universal Angular 2 ES6" height="320"/>
 
 </p>
 
-# Angular 2 Universal Starter [![Universal Angular 2](https://img.shields.io/badge/universal-angular2-brightgreen.svg?style=flat)](https://github.com/angular/universal)
-> Server-Side Rendering for Angular 2
+# Angular 2 [ES6-Babel] Universal Starter [![Universal Angular 2](https://img.shields.io/badge/universal-angular2-brightgreen.svg?style=flat)](https://github.com/angular/universal)
+> Server-Side Rendering for Angular 2 in **ES6** (using Babel)
 
-A minimal Angular 2 starter for Universal JavaScript using TypeScript 2 and Webpack 2
+A minimal Angular 2 starter for Universal JavaScript using ES6/Babel and Webpack 2
 
+> **Recommend** : If you're looking for Universal Starter written in TypeScript go to [angular/universal-starter](https://github.com/angular/universal-starter)
 > If you're looking for the Angular Universal repo go to [**angular/universal**](https://github.com/angular/universal)  
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
