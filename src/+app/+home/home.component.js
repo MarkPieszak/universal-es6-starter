@@ -8,11 +8,11 @@ import { Http } from '@angular/http';
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.Emulated,
   selector: 'home',
-  styleUrls: [ './home.component.css' ],
+  style: require('./home.component.css'),
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
-  
+
   constructor(http) {
     this.data = {};
     this.http = http;
