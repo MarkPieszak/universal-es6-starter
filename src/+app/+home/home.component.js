@@ -1,8 +1,6 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 
-import { Http } from '@angular/http';
-
-// import { ModelService } from '../shared/model/model.service';
+import { ModelService } from '../shared/model/model.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
@@ -29,5 +27,5 @@ export class HomeComponent {
 
 }
 HomeComponent.parameters = [
-  [Http]
+  [ModelService]
 ];

@@ -5,13 +5,16 @@
 
 </p>
 
-# Angular 2 [ES6-Babel] Universal Starter [![Universal Angular 2](https://img.shields.io/badge/universal-angular2-brightgreen.svg?style=flat)](https://github.com/angular/universal)
-> Server-Side Rendering for Angular 2 in **ES6** (using Babel)
+# Angular 2+ [ES6-Babel] Universal Starter [![Universal Angular 2](https://img.shields.io/badge/universal-angular2-brightgreen.svg?style=flat)](https://github.com/angular/universal)
+> Server-Side Rendering for Angular 2+ in **ES6** (using Babel)
 
-A minimal Angular 2 starter for Universal JavaScript using ES6/Babel and Webpack 2
+A minimal Angular 2+ starter for Universal JavaScript using ES6/Babel and Webpack 2
 
 > **Recommend** : If you're looking for Universal Starter written in TypeScript go to [angular/universal-starter](https://github.com/angular/universal-starter)
 > If you're looking for the Angular Universal repo go to [**angular/universal**](https://github.com/angular/universal)  
+
+## What's the difference between TypeScript and ES6 or even ES5 when writing Angular v2+?
+[Read here for more information](https://angular.io/docs/ts/latest/cookbook/ts-to-js.html)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 

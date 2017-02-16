@@ -4,6 +4,9 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/share';
 
+import { ApiService } from '../api.service';
+import { CacheService } from '../cache.service';
+
 export function hashCodeString(str) {
     let hash = 0;
     if (str.length === 0) {
@@ -49,3 +52,7 @@ export class ModelService {
         // TODO
     }
 };
+
+ModelService.parameters = [
+  [ApiService], [CacheService]
+]

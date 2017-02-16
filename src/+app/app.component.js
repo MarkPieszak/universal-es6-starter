@@ -16,6 +16,7 @@ export class XLargeDirective {
     // ^^
   }
 }
+// Dependency Injection
 XLargeDirective.parameters  = [
   [ElementRef], [Renderer]
 ];
