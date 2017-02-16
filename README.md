@@ -16,7 +16,7 @@ A minimal Angular 2+ starter for Universal JavaScript using ES6/Babel and Webpac
 ---
 
 ## What's the difference between TypeScript and ES6 or even ES5 when writing Angular v2+?
-[Read here for more information](https://angular.io/docs/ts/latest/cookbook/ts-to-js.html)
+### [Read here for more information](https://angular.io/docs/ts/latest/cookbook/ts-to-js.html)
 
 ---
 
