@@ -4,7 +4,6 @@ import { Component, Directive, ElementRef, Renderer, ChangeDetectionStrategy, Vi
 /////////////////////////
 // ** Example Directive
 // Notice we don't touch the Element directly
-
 @Directive({
   selector: '[xLarge]'
 })
@@ -70,9 +69,3 @@ export class AppComponent {
     this.title = 'ftw';
   }
 }
-
-
-// strong>Router-outlet:</strong>
-// <main>
-//   <router-outlet></router-outlet>
-// </main>

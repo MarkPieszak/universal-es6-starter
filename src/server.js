@@ -33,7 +33,7 @@ enableProdMode();
 const app = express();
 const ROOT = path.join(path.resolve(__dirname, '..'));
 
-// Express View 
+// Express View
 app.engine('.html', createEngine({
   ngModule: MainModule,
   providers: [

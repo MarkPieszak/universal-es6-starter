@@ -1,7 +1,7 @@
 {
-  "name": "universal-starter",
+  "name": "universal-babel-starter",
   "version": "2.0.0",
-  "description": "Angular 2 Universal starter kit by @AngularClass",
+  "description": "Angular 2 Universal starter kit - ES6/babel version",
   "repository": {
     "type": "git",
     "url": "https://github.com/angular/universal-starter.git"
@@ -30,11 +30,9 @@
   },
   "license": "MIT",
   "contributors": [
+    "Mark Pieszak <mpieszak84@gmail.com>",
     "AngularClass <hello@angularclass.com>",
-    "PatrickJS <patrick@angularclass.com>",
-    "Jeff Whelpley <jeff@gethuman.com>",
-    "Jeff Cross <crossj@google.com>",
-    "Mark Pieszak <mpieszak84@gmail.com>"
+    "PatrickJS <patrick@angularclass.com>"
   ],
   "dependencies": {
     "@angular/common": "~2.4.7",
@@ -74,7 +72,7 @@
     "babel-loader": "6.3.0",
     "babel-plugin-__coverage__": "11.0.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-angular2": "0.0.2", 
+    "babel-preset-angular2": "0.0.2",
     "babel-preset-es2015": "6.22.0",
     "cookie-parser": "^1.4.3",
     "express-interceptor": "^1.2.0",

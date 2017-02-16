@@ -6,11 +6,11 @@ import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
 
 import { AppModule, AppComponent } from '../+app/app.module';
 import { SharedModule } from '../+app/shared/shared.module';
-// import { CacheService } from './+app/shared/cache.service';
+import { CacheService } from '../+app/shared/cache.service';
 
 // Will be merged into @angular/platform-browser in a later release
 // see https://github.com/angular/angular/pull/12322
-// import { Meta } from './angular2-meta';
+import { Meta } from '../angular2-meta';
 
 // import * as LRU from 'modern-lru';
 
@@ -54,74 +54,49 @@ export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
 
     // { provide: 'LRU', useFactory: getLRU, deps: [] },
 
-    // CacheService,
-
-    // Meta,
+    CacheService,
+    Meta,
 
     { provide: AUTO_PREBOOT, useValue: false } // turn off auto preboot complete
   ]
 })
 export class MainModule {
-  // constructor(public cache: CacheService) {
-  //   // TODO(gdi2290): refactor into a lifecycle hook
-  //   this.doRehydrate();
-  // }
+  constructor(cache) {
+    this.cache = cache;
+    // TODO(gdi2290): refactor into a lifecycle hook
+    this.doRehydrate();
+  }
 
-  // doRehydrate() {
-  //   let defaultValue = {};
-  //   let serverCache = this._getCacheValue(CacheService.KEY, defaultValue);
-  //   this.cache.rehydrate(serverCache);
-  // }
+  doRehydrate() {
+    let defaultValue = {};
+    let serverCache = this._getCacheValue(CacheService.KEY, defaultValue);
+    this.cache.rehydrate(serverCache);
+  }
 
-  // _getCacheValue(key: string, defaultValue: any): any {
-  //   // browser
-  //   const win: any = window;
-  //   if (win[UNIVERSAL_KEY] && win[UNIVERSAL_KEY][key]) {
-  //     let serverCache = defaultValue;
-  //     try {
-  //       serverCache = JSON.parse(win[UNIVERSAL_KEY][key]);
-  //       if (typeof serverCache !== typeof defaultValue) {
-  //         console.log('Angular Universal: The type of data from the server is different from the default value type');
-  //         serverCache = defaultValue;
-  //       }
-  //     } catch (e) {
-  //       console.log('Angular Universal: There was a problem parsing the server data during rehydrate');
-  //       serverCache = defaultValue;
-  //     }
-  //     return serverCache;
-  //   } else {
-  //     console.log('Angular Universal: UNIVERSAL_CACHE is missing');
-  //   }
-  //   return defaultValue;
-  // }
+  _getCacheValue(key, defaultValue) {
+    // browser
+    const win = window;
+    if (win[UNIVERSAL_KEY] && win[UNIVERSAL_KEY][key]) {
+      let serverCache = defaultValue;
+      try {
+        serverCache = JSON.parse(win[UNIVERSAL_KEY][key]);
+        if (typeof serverCache !== typeof defaultValue) {
+          console.log('Angular Universal: The type of data from the server is different from the default value type');
+          serverCache = defaultValue;
+        }
+      } catch (e) {
+        console.log('Angular Universal: There was a problem parsing the server data during rehydrate');
+        serverCache = defaultValue;
+      }
+      return serverCache;
+    } else {
+      console.log('Angular Universal: UNIVERSAL_CACHE is missing');
+    }
+    return defaultValue;
+  }
 }
 
+MainModule.parameters = [
+  [CacheService]
+];
 
-
-// import { NgModule, Component } from '@angular/core';
-// import { UniversalModule, isBrowser, isNode } from 'angular2-universal/node'; // for AoT we need to manually split universal packages
-
-// @Component({
-//     selector: 'my-app',
-//     template: `<h1> Browser Angular SSR with ES6, yipee! </h1>`
-// })
-// export class AppComponent {
-//     constructor () {
-//         console.log('App component constructor!');
-//     }
-// }
-
-// @NgModule({
-//   declarations : [ AppComponent ],
-//   bootstrap: [ AppComponent ],
-//   imports: [
-//     UniversalModule // BrowserModule, HttpModule, and JsonpModule are included
-//   ],
-//   providers: [
-//     { provide: 'isBrowser', useValue: isBrowser },
-//     { provide: 'isNode', useValue: isNode }
-//   ]
-// })
-// export class MainModule {
-
-// }

@@ -10,6 +10,8 @@
  * ];
  **/
 export const routes = [
-  // 'about',
-  'home'
+  'about',
+  'home',
+  'todo',
+  'lazy',
 ];
